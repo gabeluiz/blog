@@ -1,10 +1,49 @@
-import styled from 'styled-components'
+import Footer from '../components/Footer'
+import Link from 'next/link';
+import { getAllPosts } from '../infra/getAllPosts';
 
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
+export default function Home({ allPosts }) {
+  return (
+    <div>
+      <header className="headerContainer">
+        <h1>
+          Blog
+        </h1>
+      </header>
 
-export default function Home() {
-  return <Title>My page</Title>
+      <section className="postsContainer">
+        {allPosts.map((post) => (
+          <article key={post.slug} className="postsContainer__post">
+            <Link href={`posts/${post.slug}`}>
+              <a>
+                {post.title}
+              </a>
+            </Link>
+            <p>
+              {post.excerpt}
+            </p>
+          </article>
+        ))}
+      </section>
+
+{/* colocar redes sociais e os carai */}
+      <Footer
+        facebook=""
+        twitter=""
+        linkedin=""
+        github=""
+      />
+    </div>
+  )
+}
+
+export async function getStaticProps() {
+  const allPosts = await getAllPosts([
+    'title',
+    'slug',
+    'excerpt',
+  ])
+  return {
+    props: { allPosts },
+  }
 }
