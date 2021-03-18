@@ -4,12 +4,18 @@ import matter from 'gray-matter'
 import remark from 'remark';
 import html from 'remark-html';
 
-const postsDirectory = join(process.cwd(), '_posts')
+// esse arquivo processa os posts em markdown .MD e transforma em HTML 
 
+//matter é uma lib que basicamente pega um arquivo e separa o titulo, e o conteudo do nosso post, le o markdown
+//remark é uma lib que transformar o nosso markdown em html
+
+
+//fs função node js acessa raiz do projeto e onde está o nosso diretorio de posts 
+const postsDirectory = join(process.cwd(), '_posts')
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory)
 }
-
+// slug é o nome amigavel que aparece na url.
 export async function getPostBySlug(slug, fields = []) {
   const realSlug = slug.replace(/\.md$/, '')
   const fullPath = join(postsDirectory, `${realSlug}.md`)
