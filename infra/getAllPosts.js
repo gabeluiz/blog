@@ -6,8 +6,8 @@ import html from 'remark-html';
 
 // esse arquivo processa os posts em markdown .MD e transforma em HTML 
 
-//matter é uma lib que basicamente pega um arquivo e separa o titulo, e o conteudo do nosso post, le o markdown
-//remark é uma lib que transformar o nosso markdown em html
+//GRAY MATTER Para podemos transformar nossos arquivos Markdown em Objetos Javascript sem esforço.
+//REMARK Com o Remark podemos transformar um conteúdo Markdown em HTML.
 
 
 //fs função node js acessa raiz do projeto e onde está o nosso diretorio de posts 

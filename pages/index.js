@@ -38,6 +38,7 @@ export default function Home({ allPosts }) {
 }
 
 export async function getStaticProps() {
+  //aqui usa gra
   const allPosts = await getAllPosts([
     'title',
     'slug',
